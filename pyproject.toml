@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "exotica-userbot"
+version = "0.3.0"
+description = "A security-conscious Telegram userbot framework foundation"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "AGPL-3.0-or-later" }
+authors = [{ name = "Exotica contributors" }]
+dependencies = ["Telethon>=1.36,<2"]
+
+[project.scripts]
+exotica = "exotica.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["exotica*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
