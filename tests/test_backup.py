@@ -1,4 +1,5 @@
 import tarfile
+import json
 import pytest
 from exotica.backup import BackupError, create_backup, restore_backup
 
@@ -35,3 +36,21 @@ def test_backup_excludes_nested_sessions(tmp_path):
     assert "sessions/main.session" not in names
     assert "sessions/main.session-journal" not in names
     assert "sessions/readme.txt" in names
+
+
+def test_backup_redacts_runtime_credentials(tmp_path):
+    source = tmp_path / "source"
+    source.mkdir()
+    config = {
+        "api_id": 12345,
+        "api_hash": "private-api-hash",
+        "nested": {"bot_token": "private-bot-token", "theme": "dark"},
+    }
+    (source / "config.json").write_text(json.dumps(config), encoding="utf-8")
+
+    backup = create_backup(source, tmp_path / "backups")
+    target = tmp_path / "target"
+    restore_backup(backup, target)
+    restored = json.loads((target / "config.json").read_text(encoding="utf-8"))
+
+    assert restored == {"api_id": 12345, "nested": {"theme": "dark"}}

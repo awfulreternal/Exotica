@@ -1,8 +1,24 @@
 from __future__ import annotations
 from datetime import datetime, timezone
+import io
+import json
 from pathlib import Path
 import tarfile
 from .config import ensure_private_dir
+
+_SENSITIVE_KEYS = {"api_hash", "api_token", "auth_key", "authkey", "bot_token", "password", "session", "token"}
+
+
+def _redact_secrets(value):
+    if isinstance(value, dict):
+        return {
+            key: _redact_secrets(item)
+            for key, item in value.items()
+            if str(key).lower().replace("-", "_") not in _SENSITIVE_KEYS
+        }
+    if isinstance(value, list):
+        return [_redact_secrets(item) for item in value]
+    return value
 
 class BackupError(ValueError):
     pass
@@ -19,9 +35,27 @@ def create_backup(source: Path, destination_dir: Path) -> Path:
         return (
             name.endswith((".session", ".session-journal", ".env"))
             or name == ".env"
+            or name == "api_token.txt"
             or name.startswith("exotica-backup-")
             or "__pycache__" == name
         )
+
+    def add_item(item: Path, arcname: str) -> None:
+        if item.suffix.lower() == ".json" and item.is_file():
+            try:
+                contents = json.loads(item.read_text(encoding="utf-8"))
+                payload = json.dumps(
+                    _redact_secrets(contents), ensure_ascii=False, indent=2
+                ).encode("utf-8")
+            except (OSError, ValueError):
+                return
+            info = tarfile.TarInfo(arcname)
+            info.size = len(payload)
+            info.mode = 0o600
+            info.mtime = item.stat().st_mtime
+            archive.addfile(info, io.BytesIO(payload))
+            return
+        archive.add(item, arcname=arcname, recursive=False)
 
     with tarfile.open(target, "w:gz") as archive:
         for item in source.iterdir():
@@ -34,10 +68,10 @@ def create_backup(source: Path, destination_dir: Path) -> Path:
                     # Do not recurse into excluded directories.
                     if any(excluded(parent) for parent in child.parents if parent != source.parent and parent != source):
                         continue
-                    archive.add(child, arcname=str(child.relative_to(source)), recursive=False)
-                archive.add(item, arcname=item.name, recursive=False)
+                    add_item(child, str(child.relative_to(source)))
+                add_item(item, item.name)
             else:
-                archive.add(item, arcname=item.name, recursive=False)
+                add_item(item, item.name)
     try:
         target.chmod(0o600)
     except OSError:

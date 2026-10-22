@@ -3,8 +3,9 @@ from exotica.modules.api import Module, command, tds
 
 def test_compatibility_report_is_explicit_about_gaps():
     report = compatibility_report()
-    assert "basic facade available" in report["loader.Module"]
-    assert "not implemented" in report["database_api"]
+    assert "Hikka-derived module loader" in report["runtime"]
+    assert "persistent module database" in report["database_api"]
+    assert "fork-specific APIs may differ" in report["hikka_imports"]
 
 def test_module_decorators_attach_metadata():
     @tds(name="Demo")

@@ -1,9 +1,4 @@
-"""Minimal compatibility facade for writing/adapting Hikka/Heroku-like modules.
-
-This does not make arbitrary legacy modules drop-in compatible. Imports such as
-`from .. import loader, utils`, private database APIs and inline manager APIs need
-individual adaptation. Only the small decorator/base-class surface below exists.
-"""
+"""Compatibility status for the vendored Hikka-derived Heroku runtime."""
 from ..modules.api import Module, command, tds
 
 class _LoaderFacade:
@@ -14,14 +9,15 @@ class _LoaderFacade:
 loader = _LoaderFacade()
 
 SUPPORTED_COMPATIBILITY = {
-    "loader.Module": "basic facade available",
-    "loader.command": "basic command decorator available",
-    "loader.tds": "metadata decorator available",
-    "module_config": "not implemented",
-    "inline_forms": "basic Telegram callback panel only; legacy inline API not compatible",
-    "galleries": "navigation demo; media gallery API not implemented",
-    "database_api": "not implemented",
-    "client_api": "Telethon client available on Exotica Module instances",
+    "runtime": "Heroku Userbot with Hikka-derived module loader and Heroku-TL client",
+    "hikka_imports": "Hikka imports are remapped by upstream loader; fork-specific APIs may differ",
+    "module_config": "upstream ModuleConfig, ConfigValue and validators included",
+    "inline_forms": "upstream inline form API included",
+    "inline_lists": "upstream inline list API included",
+    "galleries": "upstream inline media galleries included",
+    "database_api": "upstream persistent module database included",
+    "security": "upstream owner/group permissions and API flood protection included",
+    "client_api": "Heroku-TL client; one Telegram client stack is installed",
 }
 
 def compatibility_report() -> dict[str, str]:
