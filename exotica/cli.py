@@ -23,11 +23,11 @@ def build_parser() -> argparse.ArgumentParser:
     restore = sub.add_parser("restore", help="restore a validated archive")
     restore.add_argument("archive", type=Path)
     sub.add_parser("login", help="start the interactive first-run login and userbot")
-    sub.add_parser("run", help="start the Heroku/Hikka userbot runtime")
+    sub.add_parser("run", help="start the Exotica userbot")
     sub.add_parser("legacy-login", help="authorize using the retired Telethon runtime")
     legacy_run = sub.add_parser("legacy-run", help="start the retired Telethon runtime")
     legacy_run.add_argument("--allow-modules", action="store_true", help="execute reviewed local Python modules (full OS permissions)")
-    sub.add_parser("compat", help="show Hikka/Heroku compatibility surface")
+    sub.add_parser("compat", help="show Hikka module compatibility")
     return parser
 
 def main(argv: list[str] | None = None) -> int:
@@ -58,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
         print("  restore  Restore a validated backup")
         print("  paths    Show data directory")
         print("  login    First-run authorization and startup")
-        print("  run      Start Heroku/Hikka runtime")
+        print("  run      Start Exotica")
         print("  legacy-run  Start retired Telethon runtime")
         print("  compat   Show legacy compatibility status")
         return 0

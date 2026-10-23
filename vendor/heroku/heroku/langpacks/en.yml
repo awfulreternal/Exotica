@@ -347,8 +347,8 @@ settings:
   aliases_cleared: "<tg-emoji emoji-id=5197474765387864959>👍</tg-emoji> <b>All aliases removed</b>."
   no_alias: "<tg-emoji emoji-id=5121063440311386962>❌</tg-emoji> <b>Alias</b> <code>{}</code> <b>does not exist</b>"
   db_cleared: "<tg-emoji emoji-id=5197474765387864959>👍</tg-emoji> <b>Database cleared</b>"
-  heroku: "{} <b>{}.{}.{}</b> <i>{}</i>\n\n<tg-emoji emoji-id=5289608677244811430>📁</tg-emoji> <b>heroku-tl:</b> <i>{}</i>\n\n<tg-emoji emoji-id=5228879218363872764>⌨</tg-emoji> <b>Developer: <a href=\"t.me/zetgo\">@zetgo</a></b>"
-  rich_heroku_message: '<figure><img src="{banner_url}"/></figure><h1>{platform} Userbot</h1><table bordered><tr><th>Component</th><th>Current release</th></tr><tr><td><b>Version</b></td><td><code>{version}</code></td></tr><tr><td><b>Build</b></td><td>{build}</td></tr><tr><td><b>Heroku TL</b></td><td><code>{htl_version}</code></td></tr><tr><td><b>API layer</b></td><td><code>{layer}</code></td></tr><tr><td><b>Current user</b></td><td><code>{current_user}</code></td></tr><tr><td><b>Developer</b></td><td><a href="https://t.me/zetgo">@zetgo</a></td></tr></table>'
+  heroku: "{} <b>EXOTICA · Hikka</b> <code>{}.{}.{}</code> <i>{}</i>\n\n<tg-emoji emoji-id=5870609858520158157>ℹ️</tg-emoji> <b>Telegram API:</b> <code>heroku-tl {}</code>"
+  rich_heroku_message: '<figure><img src="{banner_url}"/></figure><h1>{platform} EXOTICA · Hikka</h1><table bordered><tr><th>Component</th><th>Version</th></tr><tr><td><b>Exotica</b></td><td><code>{version}</code></td></tr><tr><td><b>Build</b></td><td>{build}</td></tr><tr><td><b>Telegram API</b></td><td><code>heroku-tl {htl_version}</code></td></tr><tr><td><b>API layer</b></td><td><code>{layer}</code></td></tr><tr><td><b>Account</b></td><td><code>{current_user}</code></td></tr></table>'
   confirm_cleardb: "⚠️ <b>Are you sure, that you want to clear database?</b>"
   cleardb_confirm: "🗑 Clear database"
   cancel: "🚫 Cancel"
@@ -369,7 +369,7 @@ settings:
   _cmd_doc_blacklistuser: "[user_id] - Prevent this user from running any commands"
   _cmd_doc_cleardb: "Clear the entire database, effectively performing a factory reset"
   _cmd_doc_delalias: "<alias|-c|--clear> - Remove an alias or clear all aliases"
-  _cmd_doc_heroku: "Get Heroku version"
+  _cmd_doc_heroku: "Show Exotica version and Telegram API information"
   _cmd_doc_setprefix: "<prefix ...> [@owner] | --user ID <prefix ...> — Set personal command prefixes"
   _cmd_doc_togglecmd: "<module> <command> or <command> - Enable or disable a command"
   _cmd_doc_togglemod: "<module> - Enable or disable an entire module"
@@ -440,7 +440,7 @@ inline_stuff:
   token_invalid: "<tg-emoji emoji-id=5121063440311386962>❌</tg-emoji> <b>Specified bot token is invalid. It must contain 8-10 numbers, </b><code>:</code> <b>and 34-36 symbols</b>"
   bot_username_occupied: "<tg-emoji emoji-id=5121063440311386962>❌</tg-emoji> <b>This username is already occupied</b>"
   bot_updated: "<tg-emoji emoji-id=6318792204118656433>🎉</tg-emoji> <b>Config successfully saved. Restart userbot to apply changes</b>"
-  this_is_heroku: "{} <b>Welcome to Exotica — modular Telegram userbot for your account.</b>"
+  this_is_heroku: "{} <b>EXOTICA · Hikka</b> — your modular Telegram userbot is ready."
   support_chat_caption: "Support Chat"
   profile_cmd: "<tg-emoji emoji-id=5393588431026674882>🪐</tg-emoji> <b>EXOTICA · PROFILE</b>\n\n<blockquote>⌨️ Prefix: {prefix}\n🛡 Process RAM: {ram_usage} MB\n⚡ CPU load: {cpu_usage}%</blockquote>\n<blockquote>☁️ Provider: {host}\n⚡ Host CPU: {host_cpu} cores\n🛡 Host RAM: {host_memory}\nTier: {cloud_tier}</blockquote>"
   restart: "🔄 Your Heroku is being restarted.."
@@ -810,7 +810,7 @@ translate:
 
 quickstart:
   name: "Exotica Welcome"
-  exotica_welcome: "{}<tg-emoji emoji-id=5393588431026674882>🪐</tg-emoji> <b>EXOTICA is ready.</b>\n\n<tg-emoji emoji-id=5870609858520158157>ℹ️</tg-emoji> <b>.exotica</b> opens the control room.\n<tg-emoji emoji-id=5870772616305839506>👥</tg-emoji> <b>.help</b> lists commands and modules.\n<tg-emoji emoji-id=5931472654660800739>📡</tg-emoji> <b>.ping</b> measures Telegram round-trip time."
+  exotica_welcome: "{}<tg-emoji emoji-id=5393588431026674882>🪐</tg-emoji> <b>EXOTICA</b> · <b>Hikka is ready.</b>\n\n<tg-emoji emoji-id=5870609858520158157>ℹ️</tg-emoji> <b>.exotica</b> · control room\n<tg-emoji emoji-id=5870772616305839506>👥</tg-emoji> <b>.help</b> · commands and modules\n<tg-emoji emoji-id=5931472654660800739>📡</tg-emoji> <b>.ping</b> · Telegram round-trip time."
   base: "<tg-emoji emoji-id=5463379725441341739>🪐</tg-emoji> <b>Hello.</b> Your <b>{}</b> userbot is now installed.\n\n<tg-emoji emoji-id=5134202243486057363>💫</tg-emoji> <b>Need help?</b> Join <a href=\"https://t.me/heroku_talks\">our support chat</a>. We help <b>everyone</b>.\n\n<tg-emoji emoji-id=4940480187436369099>💁‍♀️</tg-emoji> <b>Quick Guide:</b>\n\n<tg-emoji emoji-id=5456197350416486261>1️⃣</tg-emoji> <b>Write</b> <code>.help</code> <b>to see the list of modules</b>\n<tg-emoji emoji-id=5456261689026581678>2️⃣</tg-emoji> <b>Write</b> <code>.help &lt;Module name/command&gt;</code> <b>to see the description of the module</b>\n<tg-emoji emoji-id=5458366235886522404>3️⃣</tg-emoji> <b>Write</b> <code>.dlmod &lt;link&gt;</code> <b>to load a module from a link</b>\n<tg-emoji emoji-id=5456207331920483861>4️⃣</tg-emoji> <b>Write</b> <code>.loadmod</code> <b>in response to a file to load a module from it</b>\n<tg-emoji emoji-id=5456185418997340146>5️⃣</tg-emoji> <b>Write</b> <code>.unloadmod &lt;Module name&gt;</code> <b>to unload a module</b>\n\n<tg-emoji emoji-id=5456178297941561360>💡</tg-emoji> <b>Heroku supports modules from Hikka, Friendly-Telegram, and GeekTG, as well as its own.</b>\n"
   language_saved: "🇬🇧 Language saved!"
   language: "🇬🇧 English"

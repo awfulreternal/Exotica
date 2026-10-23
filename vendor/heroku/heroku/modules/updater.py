@@ -51,7 +51,7 @@ os.environ["GIT_ASKPASS"] = "echo"
 
 @loader.tds
 class UpdaterMod(loader.Module):
-    """Updates itself, tracks latest Heroku releases, and notifies you, if update is required"""
+    """Updates Exotica and notifies you when an update is available."""
 
     strings = {"name": "ExoticaUpdater"}
     _GIT_FETCH_INTERVAL = 300
@@ -475,7 +475,7 @@ class UpdaterMod(loader.Module):
             self.strings["restarting_caption"].format(
                 utils.get_platform_emoji()
                 if self._client.heroku_me.premium
-                else "Heroku"
+                else "Exotica"
             ),
         )
 
@@ -917,7 +917,7 @@ class UpdaterMod(loader.Module):
             text=self.strings["stop_ub_confirm"].format(
                 utils.get_platform_emoji()
                 if self.client.heroku_me.premium
-                else "Heroku"
+                else "Exotica"
             ),
             reply_markup=[
                 [

@@ -14,6 +14,7 @@ import logging
 
 from .. import loader, translations, utils
 from ..inline.types import BotInlineCall
+from exotica.telegram_ui import resolve_custom_emoji
 
 logger = logging.getLogger(__name__)
 
@@ -26,22 +27,26 @@ class Quickstart(loader.Module):
         "name": "ExoticaWelcome",
         "exotica_welcome": (
             "{}<tg-emoji emoji-id=5393588431026674882>🪐</tg-emoji> "
-            "<b>EXOTICA is ready.</b>\n\n"
+            "<b>EXOTICA</b>  ·  <b>Hikka is ready.</b>\n\n"
             "<tg-emoji emoji-id=5870609858520158157>ℹ️</tg-emoji> "
-            "<b>.exotica</b> opens the control room.\n"
+            "<b>.exotica</b>  ·  control room\n"
             "<tg-emoji emoji-id=5870772616305839506>👥</tg-emoji> "
-            "<b>.help</b> lists commands and modules.\n"
+            "<b>.help</b>  ·  commands and modules\n"
             "<tg-emoji emoji-id=5931472654660800739>📡</tg-emoji> "
-            "<b>.ping</b> measures Telegram round-trip time."
+            "<b>.ping</b>  ·  Telegram round-trip time"
         ),
     }
 
     async def client_ready(self):
-        self.text = lambda: self.strings["exotica_welcome"].format(
-            utils.get_platform_emoji()
-            if self.client.heroku_me.premium is True
-            else ""
-        )
+        def welcome_text():
+            text = self.strings["exotica_welcome"].format(
+                utils.get_platform_emoji() if self.client.heroku_me.premium else ""
+            )
+            return resolve_custom_emoji(
+                text, premium=bool(self.client.heroku_me.premium)
+            )
+
+        self.text = welcome_text
 
         try:
             content_channel = None

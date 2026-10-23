@@ -20,7 +20,7 @@ def banner() -> str:
     host = "lavHost-compatible" if os.environ.get("LAVHOST") else "self-hosted"
     return "\n".join((
         style("  ┌─ EXOTICA ───────────────────────────────────────┐", BOLD + CYAN),
-        style("  │  TELEGRAM USERBOT   /   HEROKU × HIKKA          │", CYAN),
+        style("  │  TELEGRAM USERBOT   /   HIKKA-INSPIRED          │", CYAN),
         style(f"  │  Version {__version__:<10}  {host:<25}│", DIM),
         style("  └────────────────────────────────────────────────┘", BOLD + CYAN),
     ))

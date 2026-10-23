@@ -19,6 +19,7 @@ from herokutl.tl.types import Message, User
 from .. import loader, main, utils, version
 from ..inline.types import InlineCall
 from exotica.host_info import get_host_profile
+from exotica.telegram_ui import resolve_custom_emoji
 
 
 @loader.tds
@@ -111,7 +112,7 @@ class CoreMod(loader.Module):
 
     @loader.command(
         ru_doc="Информация о Хероку",
-        en_doc="Information of Heroku",
+        en_doc="Exotica build and Telegram API information",
         ua_doc="Інформація про Хероку",
         de_doc="Informationen über Heroku",
     )
@@ -143,27 +144,40 @@ class CoreMod(loader.Module):
                 rich_message += f"<footer>{branch_text.strip()}</footer>"
             await utils.answer(
                 message,
-                rich_message=rich_message,
+                rich_message=resolve_custom_emoji(
+                    rich_message, premium=bool(self._client.heroku_me.premium)
+                ),
                 reply_to=getattr(message, "reply_to_msg_id", None),
             )
             return
 
+        text = self.strings["heroku"].format(
+            (
+                utils.get_platform_emoji()
+                if self._client.heroku_me.premium
+                else "🪐 <b>EXOTICA · Hikka</b>"
+            ),
+            *version.__version__,
+            utils.get_commit_url(),
+            f"{herokutl.__version__} #{herokutl.tl.alltlobjects.LAYER}",
+        ) + branch_text
+        text = resolve_custom_emoji(
+            text, premium=bool(self._client.heroku_me.premium)
+        )
         await utils.answer(
             message,
-            self.strings["heroku"].format(
-                (
-                    utils.get_platform_emoji()
-                    if self._client.heroku_me.premium
-                    else "🪐 <b>Exotica userbot</b>"
-                ),
-                *version.__version__,
-                utils.get_commit_url(),
-                f"{herokutl.__version__} #{herokutl.tl.alltlobjects.LAYER}",
-            )
-            + (branch_text),
+            text,
             file=Path(__file__).resolve().parents[2] / "assets" / "exotica.png",
             reply_to=getattr(message, "reply_to_msg_id", None),
         )
+
+    @loader.command(
+        ru_doc="Информация о сборке Exotica",
+        en_doc="Show Exotica build information",
+    )
+    async def hikka(self, message: Message):
+        """Show the Exotica build and Telegram API information."""
+        await self.herokucmd(message)
 
     @loader.command()
     async def blacklist(self, message: Message):
