@@ -1,105 +1,146 @@
-# EXOTICA
+<a href="https://deepsource.io/gh/hikariatama/Hikka/?ref=repository-badge"><img src="https://deepsource.io/gh/hikariatama/Hikka.svg/?label=active+issues&show_trend=true&token=IPVI_QX-cSuQSVeVl8cb5PLt" alt="DeepSource"></a>
+<a href="https://deepsource.io/gh/hikariatama/Hikka/?ref=repository-badge"><img src="https://deepsource.io/gh/hikariatama/Hikka.svg/?label=resolved+issues&show_trend=true&token=IPVI_QX-cSuQSVeVl8cb5PLt" alt="DeepSource"></a><br>
+<a href="https://www.codacy.com/gh/hikariatama/Hikka/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hikariatama/Hikka&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/97e3ea868f9344a5aa6e4d874f83db14"/></a>
+<a href="#"><img src="https://img.shields.io/github/languages/code-size/hikariatama/Hikka"/></a>
+<a href="#"><img src="https://img.shields.io/github/issues-raw/hikariatama/Hikka"/></a>
+<a href="#"><img src="https://img.shields.io/github/license/hikariatama/Hikka"/></a>
+<a href="#"><img src="https://img.shields.io/github/commit-activity/m/hikariatama/Hikka"/></a><br>
+<a href="#"><img src="https://img.shields.io/github/forks/hikariatama/Hikka?style=flat"/></a>
+<a href="#"><img src="https://img.shields.io/github/stars/hikariatama/Hikka"/></a>&nbsp;<a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code style: black"></a><br>
 
-Exotica is a Telegram userbot powered by the vendored Heroku runtime, itself derived from Hikka. This distribution combines Heroku's actively maintained Hikka-compatible loader, security policy, built-in modules, and Heroku-TL client with Exotica installation, private data management, diagnostics, and backup tooling.
+<hr>
 
-## Install
+<b>Warning: </b>If you are a paranoid person, you should not use this userbot. This userbot is not a virus, but it can be used for malicious purposes. You are responsible for all actions taken by your account.  
+  
+**Important notice**: Versions `1.6.4` and `1.7.0` will NOT be released due to the reasons mentioned in the chanelog.  
+The development will start from scratch with a new project, which will be announced later.  
+As of March 2025, you can apply for an early stage of alpha-testing through the official channels.  
 
-Requires Python 3.11 or newer. Python 3.14 has been tested in a clean Codespaces-style environment.
+<hr>
+<h2><img src="https://github.com/hikariatama/assets/raw/master/1326-command-window-line-flat.webp" height="54" align="middle"> Installation</h2>
 
-```sh
-git clone <YOUR-EXOTICA-REPOSITORY-URL> Exotica
-cd Exotica
-./scripts/install.sh
-. .venv/bin/activate
-exotica doctor
-```
+### Installation page
 
-The installer creates `.venv` and installs the single default Telegram client stack (`herokutl`). It does not install Telethon or Hikka's incompatible legacy client stack.
+<img src="https://github.com/hikariatama/assets/raw/master/install_qr.gif" height="256">
 
-## First run
+<a href="https://t.me/lavhostbot?start=SGlra2E"><img src="https://user-images.githubusercontent.com/36935426/167272288-85f00779-4b98-47da-8d0d-ea2c6370b979.png" height="40"></a>
 
-Create your Telegram API credentials at [my.telegram.org](https://my.telegram.org). Then start the interactive setup:
+<h2>Local installation:</h2>
+Simply run this command out of <b>root</b> and follow the instructions of installer:<br>
+<code>. <(wget -qO- https://hikariatama.ru/get_hikka)</code><br>
+<br>
+<b>Manual installation (no script):</b><br>
+<code>apt update && apt install git libcairo2 -y && git clone https://github.com/hikariatama/Hikka && cd Hikka && pip install -r requirements.txt && python3 -m hikka</code><br.>
+<i>If you are on VPS\VDS, type <code>--proxy-pass</code> in the end of command to open SSH tunnel to your Hikka web interface, or use <code>--no-web</code> to complete setup in console</i><br>
+<br>
+<b>Some further details:</b>
 
-```sh
-exotica login
-```
+<details>
+ <summary>Pre-installed automatic database backuper</summary>
+ <img src="https://user-images.githubusercontent.com/36935426/202905566-964d2904-f3ce-4a14-8f05-0e7840e1b306.png" width="300">
+</details>
+<details>
+ <summary>Welcome installation info</summary>
+ <img src="https://user-images.githubusercontent.com/36935426/202905720-6319993b-697c-4b09-a194-209c110c79fd.png" width="300">
+ <img src="https://user-images.githubusercontent.com/36935426/202905746-2a511129-0208-4581-bb27-7539bd7b53c9.png" width="300">
+</details>
 
-The setup asks for the API ID/hash if they are not already configured, then offers phone or QR authorization. Enter the login code and, if enabled, your two-step verification password. To request QR login directly:
+<hr>
+<h2><img src="https://github.com/hikariatama/assets/raw/master/35-edit-flat.webp" height="54" align="middle"> Changes</h2>
 
-```sh
-exotica login --qr-login
-```
+<ul>
+ <li>🆕 <b>Latest Telegram layer</b> with reactions, video stickers and other stuff</li>
+ <li>🔓 <b>Security</b> improvements, including <b>native entity caching</b> and <b>targeted security rules</b></li>
+ <li>🎨 <b>UI/UX</b> improvements</li>
+ <li>📼 Improved and new <b>core modules</b></li>
+ <li>⏱ Quick <b>bug fixes</b> (compared to official FTG and GeekTG)</li>
+ <li>▶️ <b>Inline forms, galleries and lists</b></li>
+ <li>🔁 Full <b>backward compatibility</b> with FTG, GeekTG and Dragon Userbot modules</li>
+</ul>
+<hr>
+<h2 border="none"><img src="https://github.com/hikariatama/assets/raw/master/1312-micro-sd-card-flat.webp" height="54" align="middle"> Requirements</h2>
+<ul>
+ <li>Python 3.8+</li>
+ <li>API_ID and HASH from <a href="https://my.telegram.org/apps" color="#2594cb">Telegram</a></li>
+</ul>
+<hr>
+<h2 border="none"><img src="https://github.com/hikariatama/assets/raw/master/680-it-developer-flat.webp" height="54" align="middle"> Documentation</h2>
 
-Credentials may instead be provided as `EXOTICA_API_ID` and `EXOTICA_API_HASH`. They are passed to the runtime through environment variables and are not placed in process arguments. The runtime saves its configuration under `EXOTICA_HOME` with private file permissions.
+Check out <a href="https://dev.hikka.pw">dev.hikka.pw</a> for developers' documentation and <a href="https://hikka.pw">hikka.pw</a> for users' documentation<br>
 
-Start the userbot with:
+<hr>
+<h2 border="none"><img src="https://github.com/hikariatama/assets/raw/master/981-consultation-flat.webp" height="54" align="middle"> <a href="https://t.me/hikka_talks">Support</a></h2>
+<hr>
+<h2 border="none"><img src="https://github.com/hikariatama/assets/raw/master/541-hand-washing-step-12-flat.webp" height="54" align="middle"> Features</h2>
+<table>
+ <tr>
+  <td>
+   <img src="https://github.com/hikariatama/assets/raw/master/1286-three-3-key-flat.webp" height="32" align="middle"><b> Forms - bored of writing? Use buttons!</b>
+  </td>
+  <td>
+   <img src="https://github.com/hikariatama/assets/raw/master/61-camera-flat.webp" height="32" align="middle"><b> Galleries - scroll your favorite photos in Telegram</b>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <img src="https://user-images.githubusercontent.com/36935426/202842205-9a3906f8-37b1-47f4-acd1-ae441f84aeab.gif">
+  </td>
+  <td>
+   <img src="https://user-images.githubusercontent.com/36935426/202842215-b7bddaf2-f544-4823-80b4-5c2cccaf2157.gif">
+  </td>
+ </tr>
+</table>
+<table>
+ <tr>
+  <td>
+   <img src="https://github.com/hikariatama/assets/raw/master/216-arrow-5-flat.webp" height="32" align="middle"><b> Inline - share userbot with your friends</b>
+  </td>
+  <td>
+   <img src="https://github.com/hikariatama/assets/raw/master/1054-amazon-echo-speaker-flat.webp" height="32" align="middle"><b> Bot interactions - "No PM"? No problem. Feedback bot at your service</b>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <img src="https://user-images.githubusercontent.com/36935426/202842234-e53f616d-7423-4a64-a5da-fb71282ad2c4.gif">
+  </td>
+  <td>
+   <img src="https://user-images.githubusercontent.com/36935426/160476037-9537f1c7-8b72-408f-b84c-b89825930bf5.gif">
+  </td>
+ </tr>
+</table>
+<table>
+ <tr>
+  <td>
+   <img src="https://github.com/hikariatama/assets/raw/master/1140-error-flat.webp" height="32" align="middle"><b> InlineLogs - traceback directly in message, caused error</b>
+  </td>
+  <td>
+   <img src="https://github.com/hikariatama/assets/raw/master/35-edit-flat.webp" height="32" align="middle"><b> Grep - execute command and get only required lines</b>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <img src="https://user-images.githubusercontent.com/36935426/202842250-b60d218e-9df4-47f6-8c67-b2ef641b4d2d.gif">
+  </td>
+  <td>
+   <img src="https://user-images.githubusercontent.com/36935426/202842263-ee2d5c94-3fd5-43b3-b8ac-2397b69e0fc6.gif">
+  </td>
+ </tr>
+</table>
 
-```sh
-exotica run
-```
+<b>👨‍👦 NoNick, NoNickUser, NoNickCmd, NoNickChat - use another account for userbot</b>
+<img src="https://user-images.githubusercontent.com/36935426/202842278-37fbc518-1679-45d7-92f5-9e519275630d.png">
 
-In Telegram:
+<hr>
+<i>⚠️ This project is provided as-is. Developer doesn't take ANY responsibility over any problems, caused by userbot. By installing Hikka you take all risks on you. This is but not limited to account bans, deleted (by Telegram algorithms) messages, SCAM-modules, leaked sessions (due to SCAM-modules). It is <b>highly</b> recommended to enable the API Flood protection (.api_fw_protection) and not to install many modules at once. By using Hikka you give your consent to any actions made by your account in background in purposes of automatization. Please, consider reading https://core.telegram.org/api/terms for more information.</i>
 
-- `.exotica` opens the Exotica inline control room with status, host, ping, and module views. Its navigation follows Hikka's inline form pattern; premium custom emoji are used when the account supports them, with Unicode fallback otherwise.
-- `.info` shows measured provider/CPU/RAM data, Exotica version, uptime, and Telegram RTT.
-- `.ping` measures RTT with one lightweight Telegram state RPC; it avoids an extra placeholder edit. Network distance and Telegram server latency cannot be optimized away locally.
-- `.help` lists the commands provided by the built-in modules.
+<b>Special thanks to:</b>
 
-The runtime includes the Hikka-derived module loader, inline forms/lists/galleries, persistent module configuration/database, owner and group security rules, API flood protection, logging, translations, and backup/settings modules. Visible built-in module names use Exotica branding; upstream namespaces and copyright notices remain intact for compatibility and provenance.
-
-Exotica creates its own inline bot profile image locally and does not auto-join Heroku support chats. Existing `heroku-userbot` asset channels and the legacy `heroku.*` database namespace remain readable for migration compatibility.
-
-Host details are detected from the actual machine and container limits. Set `EXOTICA_CLOUD_PROVIDER=Oracle Cloud` only when needed, `EXOTICA_HOST_CPU_CORES` or `EXOTICA_HOST_MEMORY_GB` to override resource detection, and `EXOTICA_CLOUD_TIER` to display an explicitly supplied tier label. A configured label is not independently verified by Exotica.
-
-CPU counts respect process affinity and Linux cgroup quotas; RAM respects cgroup limits. The dashboard reports measured Telegram RTT using one `updates.GetStateRequest`. It can avoid extra local API calls, but cannot reduce network distance or Telegram server response time.
-
-Oracle's [official Always Free compute documentation](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) currently describes A1 usage equivalent to 2 OCPU and 12 GB RAM continuously (1,500 OCPU-hours and 9,000 GB-hours monthly). A measured 24 GB instance is displayed as hardware/container capacity, not automatically as an Always Free entitlement; verify the tenancy's quotas and billing in OCI.
-
-## Modules and security
-
-The upstream loader supports Hikka/Heroku module APIs and remaps common Hikka imports. This is not a guarantee that every third-party or fork-specific module works unchanged. The installed runtime can download modules when explicitly requested through its loader commands. Downloaded Python modules have the same operating-system and Telegram-account permissions as Exotica; they are not sandboxed. Review source before installing modules and restrict who can invoke commands through the security settings.
-
-Built-in code-evaluation and terminal features are powerful and must only be used by the account owner. Do not expose an account session, API credentials, or writable module directory to other users.
-
-## Data, backup, and restore
-
-By default, Exotica stores data in `~/.local/share/exotica`; set `EXOTICA_HOME` to choose another directory. The runtime keeps configuration, module database, downloaded modules, and its session files under this private root.
-
-`exotica backup` creates a local archive. Session files, `.env`, and legacy `api_token.txt` are excluded; sensitive keys such as API hashes and bot tokens are removed from archived JSON configuration. `exotica restore <archive>` validates archive paths and rejects links and special files.
-
-The upstream Telegram backup modules are separate features and may send database/module backups through Telegram. Review their behavior and destination before enabling or using them.
-
-## CLI
-
-- `exotica doctor` — Python, platform, data-directory permissions, runtime availability.
-- `exotica paths` — active data root.
-- `exotica modules` — list downloaded runtime module source files without executing them; active modules are managed by the upstream loader in `loaded_modules`.
-- `exotica backup` / `exotica restore <archive>` — local managed-data backup and restore.
-- `exotica compat` — report the included Hikka-derived APIs and known compatibility caveats.
-- `exotica run [Heroku options]` — run the active userbot; upstream options such as `--qr-login`, `--proxy-host`, and `--proxy-port` are forwarded.
-- `exotica login [Heroku options]` — interactive first-run login with the upstream web flow disabled.
-
-The retired Telethon implementation is available only through `exotica legacy-login` and `exotica legacy-run`. Install its optional dependency with `python -m pip install -e '.[legacy]'` only if you explicitly need that old implementation.
-
-## Termux and Docker
-
-Run the Termux installer inside Termux as an ordinary user:
-
-```sh
-sh scripts/install-termux.sh
-. .venv/bin/activate
-exotica login
-```
-
-Docker uses a non-root account and persistent `/data` volume. For interactive setup use `docker compose run --rm exotica login`; then run `docker compose run --rm exotica run`. Do not publish the data volume.
-
-## Upstream sources
-
-- [Heroku Userbot](https://github.com/Heroku-userbot/Heroku), pinned in `vendor/heroku` at commit `4d8a764087bd27e146c7834b720f3cd717abd0ec`. It is the selected runtime and contains Hikka-derived loader/UI/modules plus Heroku security and settings changes.
-- [Hikka Userbot](https://github.com/hikariatama/hikka), pinned in `vendor/hikka` at commit `35bd52e24026bb6cb6e7a4ef2f85e9ca900b16aa`. Its upstream web UI is retained as source/reference, but its runtime is not installed because its pinned `aiohttp==3.8.3` fails to build on Python 3.14. Its supported Telegram inline/module functionality is supplied through the selected Heroku-derived runtime.
-- [Heroku-TL](https://github.com/coddrago/heroku-tl), pinned as the `herokutl==2.2.1` dependency. This is a Telegram MTProto client library, not the Heroku Userbot.
-- Hikka's README links to [`@lavhostbot`](https://t.me/lavhostbot?start=SGlra2E) for installation, and its source contains `LAVHOST`/`lavhost.ml` hosting hooks. Heroku's inspected current source does not contain those hooks. No official lavHost hosting source repository was verified. [`m3anly/lavmsgbot`](https://github.com/m3anly/lavmsgbot) describes itself as a remake for an instance of `@lavhost_bot`; it is not treated as official lavHost code. Exotica recognizes `LAVHOST` for its host display; it does not claim to provision or manage lavHost accounts.
-
-## Licensing
-
-Exotica, Hikka, and the checked-in Heroku license/source headers use AGPL-3.0 terms; full upstream license files and source copyright notices are retained under `vendor/`. GitHub's repository metadata currently labels Heroku GPL-3.0 while its checked-in LICENSE and source headers state AGPL-3.0; verify with the upstream maintainers before redistribution. Heroku-TL is MIT-licensed. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for exact provenance and obligations. Modified network-accessible versions must comply with AGPL-3.0 source-offer requirements.
+<ul>
+    <li><a href="https://gitlab.com/hackintosh5">Hackintosh5</a> for FTG, which is the base of project</li>
+    <li><a href="https://t.me/kazunimo">Kazunimo</a> for Turkish translation pack</li>
+    <li><a href="https://t.me/hegaNET">Hegakura</a> for Tatar translation pack</li>
+    <li><a href="https://t.me/tiefeschwarz">Aldehydesäure</a> for German translation pack</li>
+    <li><a href="https://t.me/amorescam">Amore</a> for Uzbek translation pack</li>
+    <li><a href="https://t.me/lonami">Lonami</a> for Telethon, which is the base of Hikka-TL</li>
+    <li><a href="https://github.com/delivrance">Dan</a> for pyrogram, which is the base of Hikka-Pyro</li>
+</ul>
